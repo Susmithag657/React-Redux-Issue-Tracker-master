@@ -41,7 +41,6 @@ export function formSubmittionStatus(status) {
 
 export function addUser(user) {
   return async function (dispatch, getState) {
-    // dispatch(signUp(user));
     try {
       const response = await UserApi.register(user);
       console.log("Inside addUser action..");
@@ -141,21 +140,22 @@ export function updateIssue(issue) {
       console.log(issues);
       dispatch(updateIssueSuccess(issues));
       return issues;
-    }
-    catch(error){
+    } catch (error) {
       throw error;
-    };
+    }
   };
 }
 export function deleteIssue(id) {
   return async function (dispatch, getState) {
     try {
-      if(Array.isArray(id) && id.length){
-       await Promise.all(id.map((async (ele )=>  await IssueApi.deleteIssue(ele) )));
-      } else if(!Array.isArray(id)){
+      if (Array.isArray(id) && id.length) {
+        await Promise.all(
+          id.map(async (ele) => await IssueApi.deleteIssue(ele))
+        );
+      } else if (!Array.isArray(id)) {
         await IssueApi.deleteIssue(id);
       }
-    
+
       dispatch(deleteIssueSuccess(id));
     } catch (error) {
       throw error;
@@ -171,10 +171,10 @@ export function loadIssue(id) {
   };
 }
 
-export function loadIssues(issues) {
+export function loadIssues() {
   return function (dispatch) {
     dispatch(loadIssuesLoading());
-    return IssueApi.getAllIssues(issues)
+    return IssueApi.getAllIssues()
       .then((issues) => {
         dispatch(loadIssuesSuccess(issues));
       })

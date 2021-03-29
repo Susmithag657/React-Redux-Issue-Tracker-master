@@ -1,14 +1,13 @@
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/ActionCreators";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-//import {sign-in-alt} from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from "react-router-dom";
-//<FontAwesomeIcon icon='sign-in-alt' />
+
 
 toast.configure()
 const LoginPage = ({message, loginUser }) => {

@@ -36,7 +36,7 @@ const Issues = ({
     return acc;
   }, []);
   const multiselectRef = React.createRef();
-  const onSelect = (selectedList, selectdItem) => {
+  const onSelect = (selectedList) => {
     const item =
       selectedList.length &&
       selectedList.reduce((acc, i) => {
