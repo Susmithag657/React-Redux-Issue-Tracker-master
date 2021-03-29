@@ -35,6 +35,7 @@ const AddIssue = ({ addIssue }) => {
     issue.severity = values.severity;
     issue.dateCreated = values.dateCreated;
     issue.dateResolved=values.dateResolved;
+    issue.count = 0;
     // alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(true);
     addIssue(issue)

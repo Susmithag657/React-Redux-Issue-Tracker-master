@@ -14,7 +14,7 @@ const Home = () => {
         console.log(res);
         for (const dataObj of res.data) {
           issueCount.push(parseInt(dataObj.count));
-          issueName.push(dataObj.name);
+          issueName.push(dataObj.description);
         }
         setChartData({
           labels: issueName,

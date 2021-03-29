@@ -4,8 +4,7 @@ import StatusLabel from "./StatusLabel";
 import { connect } from "react-redux";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { deleteIssue } from "../../actions/ActionCreators";
-
+import { deleteIssue, updateIssue } from "../../actions/ActionCreators";
 const Issue = ({
   issue,
   deleteIssue,
@@ -14,6 +13,7 @@ const Issue = ({
   filters,
   SetMultiDelete,
   multiDelete,
+  updateIssue,
   ...rest
 }) => {
   const showStatus = filters.includes("Status");
@@ -24,9 +24,24 @@ const Issue = ({
     e.preventDefault();
     deleteIssue(issue.id);
   };
-  const notify = () => toast.success('Deleted Successfully', 
+  const notify = () => toast.success('Deleted Successfully',
   {position: toast.POSITION.TOP_RIGHT}, {autoClose:2000});
-
+  const onSubmit = (values) => {
+    // alert(JSON.stringify(values, null, 2));
+    const issue = {};
+    issue.id = values.id;
+    issue.description = values.description;
+    issue.status = values.status;
+    issue.severity = values.severity;
+    issue.count = values.count+1;
+    issue.dateCreated = new Date(values.dateCreated);
+    issue.dateResolved = new Date(values.dateResolved);
+    updateIssue(issue)
+      .then(() => {
+        console.log("Issue Updated!");
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <Prompt when={!isLoggedIn} message />
@@ -37,8 +52,6 @@ const Issue = ({
               <div className="card-body">
                 <div className="container">
                   <div className="row">
-                    
-                 
                     <div className="d-flex flex-column col-md-2 border-end">
                     <div>
                     <input
@@ -83,10 +96,10 @@ const Issue = ({
                         </div>
                       </div>
                     </div>
-
                     <div className="d-flex flex-column col-md-2 ">
                       <Link
                         to={`/issues/${issue.id}`}
+                        onClick={()=> onSubmit(issue)}
                         className="btn btn-primary mb-1 text-decoration-none text-nowrap"
                       >
                         View
@@ -99,7 +112,6 @@ const Issue = ({
                         Edit
                       </Link>
                       <br />
-
                       <Link
                         to="#"
                         className="btn btn-primary mb-1 text-decoration-none text-nowrap"
@@ -129,7 +141,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteIssue: (id) => dispatch(deleteIssue(id))
+    deleteIssue: (id) => dispatch(deleteIssue(id)),
+    updateIssue: (issue) => dispatch(updateIssue(issue))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Issue);
