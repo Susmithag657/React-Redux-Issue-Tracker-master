@@ -1,53 +1,74 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
+import axios from "axios";
 
 const Home = () => {
-  const [chartData, setChartData] = useState({})
+  const [chartData, setChartData] = useState({});
+
   const chart = () => {
-    setChartData({
-      labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
-      datasets: [
-          {
-            label: "level of thiccness",
-            data: [35, 45, 12, 76, 69],
-            backgroundColor: ["rgba(75, 192, 192, 0.6)"],
-            borderWidth: 4
-          }
-      ]
-    })
-  }
+    let issueCount = [];
+    let issueName = [];
+    axios
+      .get("http://localhost:3004/issues")
+      .then(res => {
+        console.log(res);
+        for (const dataObj of res.data) {
+          issueCount.push(parseInt(dataObj.count));
+          issueName.push(dataObj.name);
+        }
+        setChartData({
+          labels: issueName,
+          datasets: [
+            {
+              label: "Most Viewed",
+              data: issueCount,
+              backgroundColor: ["rgba(80, 190, 192, 0.6)"],
+              borderWidth: 6
+            }
+          ]
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log(issueCount, issueName);
+  };
+
   useEffect(() => {
     chart();
   }, []);
   return (
-    <div style={{ marginTop: '20px' }}>
-      <h1>Home Page</h1>
-      <div style={{height:"500px", width: "500px", marginRight: "20px"}}>
-        <Line data = {chartData} options={{
-          responsive: true,
-          title: { text: 'Most viewed', display: true},
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 10,
-                  beginAtZero: true,
-                },
-                gridLines: {
-                  display: false
+    <div className="App" style= {{marginTop: "20px"}}>
+      <h1>Home</h1>
+      <div style = {{height: "700px", width: "700px", marginLeft: "280px"}}>
+        <Line
+          data={chartData}
+          options={{
+            responsive: true,
+            title: { text: "Most Viewed Issues", display: true },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    beginAtZero: true
+                  },
+                  gridLines: {
+                    display: false
+                  }
                 }
-              }
-            ],
-            xAxes: [
-              {
-                gridLines: {
-                  display: false
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false
+                  }
                 }
-              }
-            ]
-          }
-        }}></Line>
+              ]
+            }
+          }}
+        />
       </div>
     </div>
   );

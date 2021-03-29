@@ -46,8 +46,8 @@ const UpdateIssueComp = ({ issues, updateIssue }) => {
     issue.description = values.description;
     issue.status = values.status;
     issue.severity = values.severity;
-    issue.dateCreated = values.dateCreated;
-    issue.dateResolved = values.dateResolved;
+    issue.dateCreated = new Date(values.dateCreated);
+    issue.dateResolved = new Date(values.dateResolved);
     // alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(true);
     updateIssue(issue)
