@@ -45,44 +45,14 @@
       "id": 1
     },
     {
-      "firstName": "Shesham",
-      "lastName": "Naidu",
-      "email": "sarathchandra231@gmail.com",
-      "mobileNumber": "09390829318",
-      "location": "salur",
-      "password": "Issue@123",
-      "confirmPassword": "Issue@123",
-      "id": "2fec8336-0b65-4b15-948f-7e5b2df3dd7e"
-    },
-    {
-      "firstName": "Shesham",
-      "lastName": "Naidu",
-      "email": "sarathchandra231@gmail.com",
-      "mobileNumber": "09390829318",
-      "location": "salur",
-      "password": "Issue@123",
-      "confirmPassword": "Issue@123",
-      "id": "30fc6bb6-c9b3-4070-92a6-631234b5b06f"
-    },
-    {
-      "firstName": "Shesham",
-      "lastName": "Naidu",
-      "email": "sarathchandra231@gmail.com",
-      "mobileNumber": "09390829318",
-      "location": "salur",
-      "password": "Issue@123",
-      "confirmPassword": "Issue@123",
-      "id": "4a0cd3f9-418e-4048-95b5-813e6e092138"
-    },
-    {
-      "firstName": "Shesham",
-      "lastName": "Naidu",
+      "firstName": "sarath",
+      "lastName": "Chandra",
       "email": "sarathchandra231@gmail.com",
       "mobileNumber": "09390829318",
       "location": "hyderabad",
       "password": "Issue@123",
       "confirmPassword": "Issue@123",
-      "id": "97bedb1a-47c2-45ae-a5d4-b23218f6d54e"
+      "id": "c6ce224a-9f4c-4041-8de3-1c2f8bb6cbdd"
     }
   ],
   "login": []
