@@ -91,12 +91,26 @@ const Issue = ({
                         <div className='row card-text">'>
                           <div className="col-sm-4 align-items-end" style = {{marginLeft: '90Px'}}>
                             {showResolvedDate
-                              ? "Resolved Date - " + issue.dateResolved
+                              ? "Resolved Date - " + `${
+                                issue.dateResolved != null
+                                  ? issue.dateResolved
+                                      .split("")
+                                      .splice(0, 10)
+                                      .join("")
+                                  : ""
+                              }`
                               : ""}
                           </div>
                           <div className="col-sm-4 align-items-end">
                             {showCreatedDate
-                              ? "Created Date - " + issue.dateCreated
+                              ? "Created Date - " + `${
+                                issue.dateCreated != null
+                                  ? issue.dateCreated
+                                      .split("")
+                                      .splice(0, 10)
+                                      .join("")
+                                  : ""
+                              }`
                               : ""}
                           </div>
                         </div>
