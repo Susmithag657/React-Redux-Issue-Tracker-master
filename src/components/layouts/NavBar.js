@@ -5,7 +5,7 @@ const NavBar = (props) => {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-lg navbar-light bg-primary mr-auto"
+        className="navbar navbar-expand-lg navbar-light mr-auto"
         style={{ color: "white" }}
       >
         <div className="container-fluid">

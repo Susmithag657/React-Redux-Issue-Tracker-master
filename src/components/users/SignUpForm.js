@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-
-import { Prompt, useHistory } from "react-router-dom";
+import { Prompt, useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { addUser } from "../../actions/ActionCreators";
@@ -72,8 +71,13 @@ const SignUpForm = ({ addUser }) => {
       <div className="row justify-content-center ">
         <div className="col-lg-6">
           <div className="card shadow mt-5 ml-5" style={{ width: "auto" }}>
+            <div
+              class="card-header text-center"
+              style={{ backgroundColor: "lightseagreen", color: "white" }}
+            >
+              <h2>Sign Up!</h2>
+            </div>
             <div className="card-body">
-              <h1 className="card-title">Sign Up!</h1>
               <Formik
                 initialValues={{
                   firstName: "",
@@ -108,7 +112,12 @@ const SignUpForm = ({ addUser }) => {
                           name="firstName"
                         >
                           {(msg) => (
-                            <div className="alert alert-danger" style={{'margin': '10px 0px'}}>{msg}</div>
+                            <div
+                              className="alert alert-danger"
+                              style={{ margin: "10px 0px" }}
+                            >
+                              {msg}
+                            </div>
                           )}
                         </ErrorMessage>
                       </span>
@@ -125,7 +134,12 @@ const SignUpForm = ({ addUser }) => {
                       <span>
                         <ErrorMessage name="lastName">
                           {(msg) => (
-                            <div className="alert alert-danger" style={{'margin': '10px 0px'}}>{msg}</div>
+                            <div
+                              className="alert alert-danger"
+                              style={{ margin: "10px 0px" }}
+                            >
+                              {msg}
+                            </div>
                           )}
                         </ErrorMessage>
                       </span>
@@ -143,7 +157,12 @@ const SignUpForm = ({ addUser }) => {
                       <span>
                         <ErrorMessage name="email">
                           {(msg) => (
-                            <div className="alert alert-danger" style={{'margin': '10px 0px'}}>{msg}</div>
+                            <div
+                              className="alert alert-danger"
+                              style={{ margin: "10px 0px" }}
+                            >
+                              {msg}
+                            </div>
                           )}
                         </ErrorMessage>
                       </span>
@@ -161,7 +180,12 @@ const SignUpForm = ({ addUser }) => {
                       <span>
                         <ErrorMessage name="mobileNumber">
                           {(msg) => (
-                            <div className="alert alert-danger" style={{'margin': '10px 0px'}}>{msg}</div>
+                            <div
+                              className="alert alert-danger"
+                              style={{ margin: "10px 0px" }}
+                            >
+                              {msg}
+                            </div>
                           )}
                         </ErrorMessage>
                       </span>
@@ -180,7 +204,12 @@ const SignUpForm = ({ addUser }) => {
                       <span>
                         <ErrorMessage name="location">
                           {(msg) => (
-                            <div className="alert alert-danger" style={{'margin': '10px 0px'}}>{msg}</div>
+                            <div
+                              className="alert alert-danger"
+                              style={{ margin: "10px 0px" }}
+                            >
+                              {msg}
+                            </div>
                           )}
                         </ErrorMessage>
                       </span>
@@ -199,7 +228,12 @@ const SignUpForm = ({ addUser }) => {
                       <span>
                         <ErrorMessage name="password">
                           {(msg) => (
-                            <div className="alert alert-danger" style={{'margin': '10px 0px'}}>{msg}</div>
+                            <div
+                              className="alert alert-danger"
+                              style={{ margin: "10px 0px" }}
+                            >
+                              {msg}
+                            </div>
                           )}
                         </ErrorMessage>
                       </span>
@@ -216,7 +250,12 @@ const SignUpForm = ({ addUser }) => {
                       <span>
                         <ErrorMessage name="confirmPassword">
                           {(msg) => (
-                            <div className="alert alert-danger" style={{'margin': '10px 0px'}}>{msg}</div>
+                            <div
+                              className="alert alert-danger"
+                              style={{ margin: "10px 0px" }}
+                            >
+                              {msg}
+                            </div>
                           )}
                         </ErrorMessage>
                       </span>
@@ -231,6 +270,18 @@ const SignUpForm = ({ addUser }) => {
                   </Form>
                 )}
               </Formik>
+            </div>
+            <div
+              class="card-footer jsutify-content-center"
+              style={{ backgroundColor: "lightseagreen", color: "white" }}
+            >
+              Already registered?{" "}
+              <span>
+                <Link to="/login" style={{ color: "blue" }}>
+                  Login
+                </Link>
+              </span>{" "}
+              here
             </div>
           </div>
         </div>

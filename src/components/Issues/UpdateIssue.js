@@ -167,6 +167,7 @@ const UpdateIssueComp = ({ issues, updateIssue }) => {
                     onChange={(value) => setFieldValue("dateCreated", value)}
                   />
                 </div>
+
                 <label
                   className="col-sm-2 col-form-label"
                   htmlFor="dateResolved"

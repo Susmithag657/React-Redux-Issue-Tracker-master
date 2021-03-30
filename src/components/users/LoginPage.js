@@ -1,6 +1,7 @@
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/ActionCreators";
@@ -57,62 +58,98 @@ const LoginPage = ({message, loginUser }) => {
     // }),
   });
   return (
-    <div className="container align-content-center" style={{ marginTop: '20px' }}>
-      <h1>Login Form</h1>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-       
-        {({isSubmitting})=>(
-        <div className="container justify-content-center mt-3">
-        <Form>
-            <div className="input-group mb-3 row ">
-              <label className="col-form-label col-sm-2 rounded" htmlFor="email">
-                Username
-              </label>
-              <Field
-                type="input"
-                name="email"
-                id="email"
-                placeholder="Email"
-                className="form-control col-sm-6"
-              />
+    <div className="container align-content-center login-form">
+      <div class="card shadow">
+        <div
+          class="card-header text-center"
+          style={{ backgroundColor: "#D3D3D3" }}
+        >
+          <h2>Login Form</h2>
+        </div>
+        <div id="login" class="card-body">
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            {({ isSubmitting }) => (
+              <div className="container justify-content-center mt-3">
+                <Form>
+                  <div className="input-group mb-3 row ">
+                    <label
+                      className="col-form-label col-sm-2 rounded text-"
+                      htmlFor="email"
+                    >
+                      Username
+                    </label>
+                    <div className="col-sm-6">
+                      <Field
+                        type="input"
+                        name="email"
+                        id="email"
+                        placeHolder="Email"
+                        className="form-control"
+                      />
 
-              <span>
-                <ErrorMessage name="email">
-                  {(msg) => <div className="alert alert-danger fs-6 form-text" style={{'margin': '10px 350px 0px 350px'}}>{msg}</div>}
-                </ErrorMessage>
-              </span>
-            </div>
-            <div className="input-group row mb-3">
-              <label className="col-form-label col-sm-2" htmlFor="password">
-                Password
-              </label>
-              <Field
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                className="form-control col-sm-6"
-              />
+                      <ErrorMessage name="email">
+                        {(msg) => (
+                          <div className="alert alert-danger fs-6 form-text">
+                            {msg}
+                          </div>
+                        )}
+                      </ErrorMessage>
+                    </div>
+                  </div>
+                  <div className="input-group row mb-3">
+                    <label
+                      className="col-form-label col-sm-2"
+                      htmlFor="password"
+                    >
+                      Password
+                    </label>
+                    <div className="col-sm-6">
+                      <Field
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                        className="form-control"
+                      />
 
-              <span>
-              <ErrorMessage name="password">
-                  {(msg) => <div className="alert alert-danger fs-6 form-text" style={{'margin': '10px 350px 0px 350px'}}>{msg}</div>}
-                </ErrorMessage>
-              </span>
-            </div>
-            <button type="submit" className="btn-primary rounded"  disabled={isSubmitting}>
-              Login
-            </button>
-          </Form>
-           </div>
-        )}
-          
-       
-      </Formik>
+                      <span>
+                        <ErrorMessage name="password">
+                          {(msg) => (
+                            <div className="alert alert-danger fs-6 form-text">
+                              {msg}
+                            </div>
+                          )}
+                        </ErrorMessage>
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    className="btn btn-primary align-center rounded"
+                    disabled={isSubmitting}
+                  >
+                    Login
+                  </button>
+                </Form>
+              </div>
+            )}
+          </Formik>
+        </div>
+        <div
+          class="card-footer jsutify-content-center"
+          style={{ backgroundColor: "#D3D3D3" }}
+        >
+          Not a registered User?{" "}
+          <span>
+            <Link to="/signup">Sign Up</Link>
+          </span>{" "}
+          here
+        </div>
+      </div>
     </div>
   );
 };

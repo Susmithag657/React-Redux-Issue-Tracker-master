@@ -16,47 +16,103 @@ const user = ({ profile, logOutUser }) => {
   const notify = () => toast.success('logout successfully', 
   {position: toast.POSITION.TOP_RIGHT}, {autoClose:1000});
   return (
-    <div className="container" style={{marginTop:'20px'}}>
-      <div className="row justify-content-start">
-        <div className="col-2">
-          <label className="" htmlFor="fullName">
-            Full Name
-          </label>
+    <div
+      className="container user-form"
+      style={{ marginTop: "20px", textAlign: "left" }}
+    >
+      <div class="card text-center">
+        <div
+          class="card-header"
+          style={{ backgroundColor: "lightseagreen", color: "white" }}
+        >
+          My Profile
         </div>
-        <div className="col-4">
-          {profile.firstName} {profile.lastName}
+        <div class="card-body">
+          <div className="container justify-content-center">
+            <div className="input-group mb-3 row ">
+              <label
+                className="col-form-label col-sm-2 rounded"
+                htmlFor="email"
+                style={{ textAlign: "left" }}
+              >
+                Full Name
+              </label>
+              <div className="col-sm-6 border">
+                <input
+                  type="text"
+                  readonly
+                  class="form-control-plaintext"
+                  value={`${profile.firstName}` + " " + `${profile.lastName}`}
+                />
+              </div>
+            </div>
+
+            <div className="input-group row mb-3">
+              <label
+                className="col-form-label col-sm-2"
+                htmlFor="password"
+                style={{ textAlign: "left" }}
+              >
+                Email
+              </label>
+              <div className="col-sm-6 border">
+                <input
+                  type="text"
+                  readonly
+                  class="form-control-plaintext"
+                  value={`${profile.email}`}
+                />
+              </div>
+            </div>
+
+            <div className="input-group row mb-3">
+              <label
+                className="col-form-label col-sm-2"
+                htmlFor="password"
+                style={{ textAlign: "left" }}
+              >
+                Mobile Number
+              </label>
+              <div className="col-sm-6 border">
+                <input
+                  type="text"
+                  readonly
+                  class="form-control-plaintext"
+                  value={`${profile.mobileNumber}`}
+                />
+              </div>
+            </div>
+
+            <div className="input-group row mb-3">
+              <label
+                className="col-form-label col-sm-2"
+                style={{ textAlign: "left" }}
+                htmlFor="password"
+              >
+                Location
+              </label>
+              <div className="col-sm-6 border">
+                <input
+                  type="text"
+                  readonly
+                  class="form-control-plaintext"
+                  value={`${profile.location}`}
+                />
+              </div>
+            </div>
+
+            <button
+              className="btn btn-primary"
+              onClick={(e) => {
+                handleLogOut(e);
+                notify();
+              }}
+            >
+              Log Out
+            </button>
+          </div>
         </div>
       </div>
-      <div className="row justify-content-start">
-        <div className="col-2">
-          <label className="" htmlFor="email">
-            email
-          </label>
-        </div>
-        <div className="col-4">{profile.email}</div>
-      </div>
-      <div className="row justify-content-start">
-        <div className="col-2">
-          <label className="" htmlFor="mobileNumber">
-            Mobille Number
-          </label>
-        </div>
-        <div className="col-4">{profile.mobileNumber}</div>
-      </div>
-      <div className="row justify-content-start">
-        <div className="col-2">
-          <label className="" htmlFor="location">
-            Location
-          </label>
-        </div>
-        <div className="col-4">{profile.location}</div>
-      </div>
-      <button className="btn btn-primary" onClick={(e) => {
-          handleLogOut(e);
-          notify();
-        }}>
-        Log Out
-      </button>
     </div>
   );
 };
