@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+
 const UpdateIssueComp = ({ issues, updateIssue }) => {
   const { id } = useParams();
   const history = useHistory();
@@ -25,7 +27,6 @@ const UpdateIssueComp = ({ issues, updateIssue }) => {
     description: Issue.description,
     status: Issue.status,
     severity: Issue.severity,
-    count: Issue.count,
     dateCreated: Date.parse(Issue.dateCreated),
     dateResolved: Date.parse(Issue.dateResolved)
   };
@@ -36,7 +37,7 @@ const UpdateIssueComp = ({ issues, updateIssue }) => {
     dateCreated: yup.string().required("Please select Due date"),
     dateResolved: yup.string()
   });
-  const notify = () => toast.success('updated the task',
+  const notify = () => toast.success('updated the task', 
   {position: toast.POSITION.TOP_RIGHT}, {autoClose:2000});
   const onSubmit = (values, actions) => {
     // alert(JSON.stringify(values, null, 2));
@@ -45,9 +46,8 @@ const UpdateIssueComp = ({ issues, updateIssue }) => {
     issue.description = values.description;
     issue.status = values.status;
     issue.severity = values.severity;
-    issue.count = values.count;
-    issue.dateCreated = new Date(values.dateCreated);
-    issue.dateResolved = new Date(values.dateResolved);
+    issue.dateCreated = values.dateCreated;
+    issue.dateResolved = values.dateResolved;
     // alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(true);
     updateIssue(issue)
@@ -167,6 +167,7 @@ const UpdateIssueComp = ({ issues, updateIssue }) => {
                     onChange={(value) => setFieldValue("dateCreated", value)}
                   />
                 </div>
+
                 <label
                   className="col-sm-2 col-form-label"
                   htmlFor="dateResolved"
@@ -206,4 +207,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateIssueComp);
+
 // export default connect(mapStatetoProps, mapDispatchToProps)(UpdateIssue);

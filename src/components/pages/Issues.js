@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Issue from "../Issues/Issue";
 import { Link } from "react-router-dom";
 import { Multiselect } from "multiselect-react-dropdown";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   filterIssuesByStatus,
   filterIssuesByDescription,
@@ -28,7 +30,7 @@ const Issues = ({
     { name: "Created Date", id: 3 },
     { name: "Resolved Date", id: 4 }
   ];
-  const [multiDelete, SetMultiDelete] = useState({})
+  const [multiDelete, SetMultiDelete] = useState({});
   const selectedValues = options.reduce((acc, i) => {
     if (visibleFilters.includes(i.name)) {
       acc.push(i);
@@ -71,10 +73,9 @@ const Issues = ({
     filterIssuesByStatus(e.target.value);
   };
   return (
-    <div className="container" style={{marginTop:'20px'}}>
-      <h1>Issue Page</h1>
+    <div className="container" style={{ marginTop: "20px" }}>
       <div className="row m-2 mx-auto justify-content-start">
-        <div className="col-md-10" style={{margin:'10px 0px 10px 110px'}}>
+        <div className="col-md-10" style={{ margin: "10px 0px 10px 110px" }}>
           <Multiselect
             options={options}
             displayValue="name"
@@ -90,7 +91,10 @@ const Issues = ({
           />
         </div>
       </div>
-      <div className="d-flex flex-row justify-content-evenly mb-4" style={{marginLeft:'60px'}}>
+      <div
+        className="d-flex flex-row justify-content-evenly mb-4"
+        style={{ marginLeft: "60px" }}
+      >
         <div className="col-sm-3">
           <select
             className="form-select"
@@ -119,7 +123,7 @@ const Issues = ({
             <option value="InProgress">In Progress</option>
           </select>
         </div>
-        <div className="col-sm-1" style = {{marginLeft:'10px'}}>
+        <div className="col-sm-1" style={{ marginLeft: "10px" }}>
           <input
             onChange={(e) => handleFilterChange(e)}
             className="form-control rounded"
@@ -130,21 +134,38 @@ const Issues = ({
           />
         </div>
         <div className="col-sm-3">
-          <Link className="btn btn-primary" onClick={()=>{
-            deleteIssue(Object.keys(multiDelete))
-          }}>
+          <Link
+            className="btn btn-sm btn-primary"
+            onClick={() => {
+              if (isLoggedIn) {
+                deleteIssue(Object.keys(multiDelete));
+              } else {
+                toast.warning(
+                  "please login",
+                  { position: toast.POSITION.TOP_RIGHT },
+                  { autoClose: 2000 }
+                );
+              }
+            }}
+          >
             Delete Multiple
           </Link>
         </div>
-        <div className="col-sm-2" style = {{marginRight:'30px'}}>
-          <Link className="btn btn-primary" to="/addIssue">
+        <div className="col-sm-2" style={{ marginRight: "30px" }}>
+          <Link className="btn btn-sm btn-primary" to="/addIssue">
             Add Issue
           </Link>
         </div>
       </div>
       {issues &&
         issues.map((issue) => (
-          <Issue multiDelete={multiDelete} SetMultiDelete={SetMultiDelete}  key={issue.id} issue={issue} filters={visibleFilters} />
+          <Issue
+            multiDelete={multiDelete}
+            SetMultiDelete={SetMultiDelete}
+            key={issue.id}
+            issue={issue}
+            filters={visibleFilters}
+          />
         ))}
     </div>
   );
@@ -153,7 +174,8 @@ const mapStateToProps = (state) => {
   return {
     issues: state.issues.issues,
     visibleFilters: state.issues.visibilityFilter,
-    sortByFilters: state.issues.filters
+    sortByFilters: state.issues.filters,
+    isLoggedIn: state.issues.isLoggedIn
   };
 };
 
@@ -168,4 +190,5 @@ const mapDispatchToProps = (dispatch) => {
     deleteIssue: (id) => dispatch(deleteIssue(id))
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Issues);

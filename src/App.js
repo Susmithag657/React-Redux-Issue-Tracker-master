@@ -20,7 +20,7 @@ const Issues = lazy(() => import("./components/pages/Issues"));
 
 const App = ({ isLoggedIn }) => {
   return (
-    <div className="App">
+    <div className="App" data-test="AppComponent">
       <Router>
         <NavBar />
         <Suspense fallback={<Loading />}>

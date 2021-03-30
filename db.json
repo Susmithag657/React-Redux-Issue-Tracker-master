@@ -1,49 +1,36 @@
 {
   "Issues": [
     {
-      "id": "8b89a9fb-b983-4a97-ad6d-733af2142b13",
-      "description": "this is another issue 12345690000 Sus",
-      "status": "Closed",
-      "severity": "Major",
-      "count": 9,
-      "dateCreated": "2021-03-29T18:30:00.000Z",
-      "dateResolved": "2021-03-31T18:30:00.000Z"
-    },
-    {
-      "id": "bad46927-1e7d-47a1-aaf3-97bd9b50ca04",
-      "description": "this is another issue 1234567777 sarath",
+      "id": "94f1bcad-cda8-4a4c-9250-cee71d0c87e5",
+      "description": "Anything for now1234",
       "status": "Open",
       "severity": "Minor",
-      "count": 1,
-      "dateCreated": "2021-03-29T04:57:34.152Z",
-      "dateResolved": "2021-03-29T04:57:34.152Z"
+      "dateCreated": "2021-03-31T04:57:00.000Z",
+      "dateResolved": "2021-03-31T04:57:00.000Z"
     },
     {
-      "id": "6d4dddc0-7141-4034-94ac-19896daa27c5",
-      "description": "Anything for now susmitha 89011",
-      "status": "Open",
-      "severity": "Major",
-      "count": 1,
-      "dateCreated": "2021-03-31T04:57:34.000Z",
-      "dateResolved": "2021-03-31T04:57:34.000Z"
-    },
-    {
-      "id": "3be236bb-a3a6-422e-aad7-f6305d00bc68",
-      "description": "Anything for now 12345678 SUS",
+      "description": "this is another issue 123456",
       "status": "Closed",
       "severity": "Major",
-      "count": 1,
-      "dateCreated": "2021-03-29T17:06:35.206Z",
-      "dateResolved": "2021-03-29T17:06:35.206Z"
+      "dateCreated": "2021-03-29T04:57:21.661Z",
+      "dateResolved": "2021-03-29T04:57:21.661Z",
+      "id": "8b89a9fb-b983-4a97-ad6d-733af2142b13"
     },
     {
-      "description": "this is another issue 1234567777 Sarath Ss",
+      "description": "this is another issue 1234567777",
       "status": "InProgress",
       "severity": "Critical",
-      "dateCreated": "2021-03-29T17:29:05.395Z",
-      "dateResolved": "2021-03-29T17:29:05.395Z",
-      "count": 0,
-      "id": "0bb2e086-c9f6-4f34-8c8b-75cc9a89f9a6"
+      "dateCreated": "2021-03-29T04:57:34.152Z",
+      "dateResolved": "2021-03-29T04:57:34.152Z",
+      "id": "bad46927-1e7d-47a1-aaf3-97bd9b50ca04"
+    },
+    {
+      "description": "Anything for now susmitha",
+      "status": "Open",
+      "severity": "Major",
+      "dateCreated": "2021-03-29T04:58:36.748Z",
+      "dateResolved": "2021-03-29T04:58:36.748Z",
+      "id": "6d4dddc0-7141-4034-94ac-19896daa27c5"
     }
   ],
   "Users": [
