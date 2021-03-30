@@ -3,9 +3,9 @@
     {
       "id": "8b89a9fb-b983-4a97-ad6d-733af2142b13",
       "description": "this is another issue 12345690000 Sus",
-      "status": "Closed",
+      "status": "Open",
       "severity": "Major",
-      "count": 9,
+      "count": 11,
       "dateCreated": "2021-03-29T18:30:00.000Z",
       "dateResolved": "2021-03-31T18:30:00.000Z"
     },
@@ -66,6 +66,16 @@
       "password": "Issue@123",
       "confirmPassword": "Issue@123",
       "id": "c6ce224a-9f4c-4041-8de3-1c2f8bb6cbdd"
+    },
+    {
+      "firstName": "Shesham",
+      "lastName": "Naidu",
+      "email": "sarathchandra231@gmail.com",
+      "mobileNumber": "09390829318",
+      "location": "sarathchandra231@gmail.com",
+      "password": "Issue@123",
+      "confirmPassword": "Issue@123",
+      "id": "7b55f02b-5664-41b2-be49-156cff358f6c"
     }
   ],
   "login": []
