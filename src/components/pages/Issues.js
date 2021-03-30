@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Issue from "../Issues/Issue";
 import { Link } from "react-router-dom";
 import { Multiselect } from "multiselect-react-dropdown";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   filterIssuesByStatus,
   filterIssuesByDescription,
@@ -131,7 +133,12 @@ const Issues = ({
         </div>
         <div className="col-sm-3">
           <Link className="btn btn-primary" onClick={()=>{
-            deleteIssue(Object.keys(multiDelete))
+            if(isLoggedIn){
+              deleteIssue(Object.keys(multiDelete))
+            } else{
+              toast.warning('please login',
+              {position: toast.POSITION.TOP_RIGHT}, {autoClose:2000})
+            }
           }}>
             Delete Multiple
           </Link>
@@ -153,7 +160,8 @@ const mapStateToProps = (state) => {
   return {
     issues: state.issues.issues,
     visibleFilters: state.issues.visibilityFilter,
-    sortByFilters: state.issues.filters
+    sortByFilters: state.issues.filters,
+    isLoggedIn: state.issues.isLoggedIn
   };
 };
 

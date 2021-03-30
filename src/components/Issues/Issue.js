@@ -22,7 +22,13 @@ const Issue = ({
   const showCreatedDate = filters.includes("Created Date");
   const handleDelete = (e) => {
     e.preventDefault();
-    deleteIssue(issue.id);
+    if(isLoggedIn){
+      deleteIssue(issue.id);
+      notify();
+    } else {
+      toast.warning('please login',
+      {position: toast.POSITION.TOP_RIGHT}, {autoClose:2000})
+    }
   };
   const notify = () => toast.success('Deleted Successfully',
   {position: toast.POSITION.TOP_RIGHT}, {autoClose:2000});
@@ -117,7 +123,6 @@ const Issue = ({
                         className="btn btn-primary mb-1 text-decoration-none text-nowrap"
                         onClick={(e) => {
                           handleDelete(e);
-                          notify();
                         }}
                       >
                         Delete
